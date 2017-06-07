@@ -28,7 +28,7 @@ uid=0(root) gid=0(root) groups=0(root),1004(input),1007(log),1011(adb),1015(sdca
 | Device           | `SCRATCH_ADDR` | `PADDING`   | committed `initrams`
 |------------------|--------------|-----------|---------
 | shamu (Nexus 6)  | `0x11000000`   | `0x0`         | AOSP `userdebug`
-| cedric (Moto G5) | `0xA0100000`   | `0x2000000` | Release, patched `init` and `adbd` to disable SELinux, `set{u,g}id` to shell, capabilities drop and adb auth
+| cedric (Moto G5) | `0xA0100000`   | `0x2000000` | Release, patched `init` and `adbd` to disable SELinux, `set{u,g}id` to shell, capabilities drop and adb auth, etc
 | athene (Moto G6) | `0x90000000`   | `0x2000000` | ""
 
 
