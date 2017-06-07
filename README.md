@@ -8,6 +8,8 @@ By Roee Hay / Aleph Research, HCL Technologies
 ```
 $ cd <initramfs folder>
 $ find . | grep -v [.]$ | cpio -R root:root -o -H newc | gzip > ../initroot-<device>.cpio.gz
+OR if padding is needed:
+$ cp ../pad ../initroot-<device>.cpio.gz && find . | grep -v [.]$ | cpio -R root:root -o -H newc | gzip > ../tmp && ls -la ../tmp && cat ../tmp >> ../initroot-<device>.cpio.gz  && rm -fr ../tmp
 $ cd ..
 ```
 2. Our commited initramfs images have adb running as root by default. It will not ask for authorization. In addition, dm-verity is disabled on the relevant partitions
