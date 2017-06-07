@@ -1,0 +1,5 @@
+on early-init
+    setprop ro.com.android.dataroaming true
+
+on post-fs-data
+    setprop ril.subscription.types RUIM

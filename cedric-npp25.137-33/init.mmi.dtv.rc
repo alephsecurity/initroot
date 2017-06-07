@@ -1,0 +1,5 @@
+on post-fs
+
+# DTV feature
+insmod /system/lib/modules/isdbt.ko
+

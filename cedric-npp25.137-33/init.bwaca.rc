@@ -1,0 +1,3 @@
+on early-init
+    setprop ro.com.google.clientidbase.ms android-motorola
+    setprop ro.com.google.clientidbase.am android-motorola

@@ -1,0 +1,13 @@
+import init.mmi.dtv.rc
+
+service fingerprintd /system/bin/fingerprintd
+    class late_start
+    user system
+    group fingerp
+    disabled
+
+on post-fs-data
+# fingerprintd
+on property:ro.hw.fps=true
+    start fingerprintd
+

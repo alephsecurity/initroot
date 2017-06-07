@@ -1,0 +1,4 @@
+on early-init
+    setprop ro.com.google.clientidbase.ms android-rogers-ca
+    setprop ro.com.google.clientidbase.am android-rogers-ca
+

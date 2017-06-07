@@ -1,0 +1,37 @@
+# Chipset-specific init settings
+on boot
+    # Change permission for type C params
+    chown root mot_tcmd /sys/devices/soc/78b6000.i2c/i2c-2/2-0022/CC_state
+    chown root mot_tcmd /sys/devices/soc/78b6000.i2c/i2c-2/2-0022/enable_vconn
+
+    # usb driver parameter permissions
+    chown root mot_tcmd /sys/module/phy_msm_usb/parameters/host_mode_disable
+    chmod 0660 /sys/module/phy_msm_usb/parameters/host_mode_disable
+
+service fingerprintd /system/bin/fingerprintd
+    class late_start
+    user system
+    group fingerp
+
+service emmc_ffu /system/bin/emmc_ffu.sh
+    user root
+    class core
+    oneshot
+    disabled
+
+on property:sys.boot_completed=1
+   start emmc_ffu
+
+    #Configure mtp rx/tx req len for msm8937
+    write /sys/module/g_android/parameters/mtp_rx_req_len 1048576
+    write /sys/module/g_android/parameters/mtp_tx_req_len 16384
+    write /sys/class/android_usb/android0/f_rndis_qc/rndis_transports " "
+
+on moto-charger
+    setprop ro.board.platform msm8937
+    trigger firmware_mounts_complete
+    start  qcom-post-boot
+    start gbmodinstall
+    start charge_only_mode
+    start batt_health
+    start thermal-com
