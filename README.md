@@ -1,4 +1,4 @@
-# PoC for initroot: Motorola Bootloader Kernel Command Line Injection Secure Boot Bypass (CVE-2016-10277) #
+initroot: Motorola Bootloader Kernel Cmdline Injection Secure Boot & Device Locking Bypass (CVE-2016-10277) #
 
 By Roee Hay / Aleph Research, HCL Technologies
 
