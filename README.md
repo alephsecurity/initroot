@@ -14,7 +14,7 @@ $ cd ..
 ```
 2. Our commited initramfs images have adb running as root by default. It will not ask for authorization. In addition, dm-verity is disabled on the relevant partitions
 ```terminal
-fastboot oem config fsg-id "a initrd=<SCATCH_ADDR+PADDING>,<initroot.cpio.gz size-PADDING>"`
+fastboot oem config fsg-id "a initrd=<SCRATCH_ADDR+PADDING>,<initroot.cpio.gz size-PADDING>"`
 fastboot flash foo initroot-<device>.cpio.gz`
 fastboot continue
 ```
