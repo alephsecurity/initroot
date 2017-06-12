@@ -34,6 +34,15 @@ uid=0(root) gid=0(root) groups=0(root),1004(input),1007(log),1011(adb),1015(sdca
 | athene (Moto G4) | `0x90000000`   | `0x2000000` | ""
 
 
+## Community Reported ##
+| Device           | Reporter | Description
+|------------------|--------------|-----------
+| Moto G5 Plus  | [drbeat](https://github.com/alephsecurity/initroot/issues/1)   | Injected boot property
+| Moto G4 Play  | [@autoprime](https://github.com/alephsecurity/initroot/issues/1)   | Full Exploitation of Verizon XT1609 
+| Moto G3 | [@asiekierka](https://twitter.com/asiekierka/status/873467107090075648) | Injected initrd caused boot loops
+
+
+
 
 **Note**:
 This vulnerability may affect other Motorola devices too: a different initramfs will be needed. A different physical address of initrd (`SCRATCH_ADDR`). `PADDING` may vary as well.
