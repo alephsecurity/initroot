@@ -45,7 +45,7 @@ uid=0(root) gid=0(root) groups=0(root),1004(input),1007(log),1011(adb),1015(sdca
 This vulnerability may affect other Motorola devices too: a different initramfs will be needed. A different physical address of initrd (`SCRATCH_ADDR`). `PADDING` may vary as well.
 
 ## Publications ##
-1. [initroot: Bypassing Nexus 6 Secure Boot through Kernel Command-line Injection] (https://alephsecurity.com/2017/05/23/nexus6-initroot/)
+1. [initroot: Bypassing Nexus 6 Secure Boot through Kernel Command-line Injection](https://alephsecurity.com/2017/05/23/nexus6-initroot/)
 2. [initroot: Hello Moto](https://alephsecurity.com/2017/06/07/initroot-moto/)
 3. [Motorola Android Bootloader Kernel Cmdline Injection Secure Boot Bypass](https://alephsecurity.com/vulns/aleph-2017011)
 
