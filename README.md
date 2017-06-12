@@ -37,7 +37,7 @@ uid=0(root) gid=0(root) groups=0(root),1004(input),1007(log),1011(adb),1015(sdca
 | Device           | Reporter | Description
 |------------------|--------------|-----------
 | Moto G5 Plus  | [drbeat](https://github.com/alephsecurity/initroot/issues/1)   | Injected boot property
-| Moto G4 Play  | [@autoprime](https://github.com/alephsecurity/initroot/issues/1)   | Full Exploitation of Verizon XT1609 
+| Moto G4 Play  | [@autoprime](https://twitter.com/utoprime/status/873941023050919936)   | Full Exploitation of Verizon XT1609 
 | Moto G3 | [@asiekierka](https://twitter.com/asiekierka/status/873467107090075648) | Injected initrd caused boot loops
 
 
