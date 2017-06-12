@@ -40,7 +40,7 @@ uid=0(root) gid=0(root) groups=0(root),1004(input),1007(log),1011(adb),1015(sdca
 | Moto G4 Play (XT1609)  | [@utoprime](https://twitter.com/utoprime)   | Full Exploitation of Verizon XT1609. [[proof](https://twitter.com/utoprime/status/873941023050919936)]
 | Moto G4 (XT1625) | [@EWorcel](https://twitter.com/EWorcel) | Injected initrd that caused boot loops. [[proof](https://twitter.com/roeehay/status/868877672016957440)]  
 | Moto G3 | [@asiekierka](https://twitter.com/asiekierka) | Injected initrd that caused boot loops. [[proof](https://twitter.com/asiekierka/status/873467107090075648)]
-| Moto G2 (XT1072) | [@TheElix](https://disqus.com/by/TheElix/) | Injected initrd that caused boot loops. [[proof](https://disqus.com/home/discussion/alephsecurity/initroot_hello_moto/#comment-3355705740)]
+| Moto G2 (XT1072) | [@TheElix](https://disqus.com/by/TheElix/) | Injected initrd caused boot loops. [[proof](https://disqus.com/home/discussion/alephsecurity/initroot_hello_moto/#comment-3355705740)]
 | Other | [@jcase](https://twitter.com/jcase) | [[proof](https://twitter.com/jcase/status/868930263782313984)]
 
 ## Note ##
