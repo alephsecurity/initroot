@@ -29,8 +29,8 @@ uid=0(root) gid=0(root) groups=0(root),1004(input),1007(log),1011(adb),1015(sdca
 | Device           | Codename | `SCRATCH_ADDR` | `PADDING`   | committed `initrams`
 |------------------|--------------|--------------|-----------|---------
 | Nexus 6  | `shamu` | `0x11000000`   | `0x0`         | AOSP `userdebug`
-| Moto G5 XT1676 | `cedric` | `0xA0100000`   | `0x2000000` | Release, patched `init` and `adbd` to disable SELinux, `set{u,g}id` to shell, capabilities drop and adb auth, etc
-| Moto G4 XT1622 | `athene` | `0x90000000`   | `0x2000000` | ""
+| Moto G5 (XT1676) | `cedric` | `0xA0100000`   | `0x2000000` | Release, patched `init` and `adbd` to disable SELinux, `set{u,g}id` to shell, capabilities drop and adb auth, etc
+| Moto G4 (XT1622) | `athene` | `0x90000000`   | `0x2000000` | ""
 
 
 ## Community Reported ##
