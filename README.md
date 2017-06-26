@@ -49,7 +49,7 @@ This vulnerability may affect other Motorola devices too: a different initramfs 
 
 ## Video Demo ##
 
-[[![Video Demo of CVE-2016-10277](http://img.youtube.com/vi/dijRMpv4ktM/0.jpg)](https://www.youtube.com/watch?v=dijRMpv4ktM)
+[![Video Demo of CVE-2016-10277](http://img.youtube.com/vi/dijRMpv4ktM/0.jpg)](https://www.youtube.com/watch?v=dijRMpv4ktM)
 
 ## Publications ##
 1. [initroot: Bypassing Nexus 6 Secure Boot through Kernel Command-line Injection](https://alephsecurity.com/2017/05/23/nexus6-initroot/)
