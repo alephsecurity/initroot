@@ -133,7 +133,7 @@ Read our [blog post](https://alephsecurity.com/2017/08/30/untethered-initroot/#p
 
 ## Verified Devices ##
 | Device           | Codename | `SCRATCH_ADDR` | `PADDING`   | committed `initrams` | Unused Partition
-|------------------|--------------|--------------|-----------|---------
+|------------------|----------|----------------|-------------|----------------------|---------
 | Nexus 6  | `shamu` | `0x11000000`   | `0x0`         | AOSP `userdebug` | `mmcblk0p11`
 | Moto G5 (XT1676) | `cedric` | `0xA0100000`   | `0x2000000` | Release, patched `init` and `adbd` to disable SELinux, `set{u,g}id` to shell, capabilities drop and adb auth, etc | `mmcblk0p41`
 | Moto G4 (XT1622) | `athene` | `0x90000000`   | `0x2000000` | "" | `mmcblk0p48`
