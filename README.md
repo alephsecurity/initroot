@@ -48,8 +48,7 @@ For example, on `athene` (some messages were removed for readabilitiy):
 
 ```terminal
 $ cd ./untethered/athene
-
-./initroot-untethered.sh 
+$ ./initroot-untethered.sh 
 Welcome to initroot-athene-untethered
 Welcome to initroot-athene-tethered
 ...
