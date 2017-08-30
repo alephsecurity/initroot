@@ -2,7 +2,7 @@
 
 By Roee Hay / Aleph Research, HCL Technologies
 
-## First stage exploit: Thethered jailbreak ##
+## First stage exploit: Tethered jailbreak ##
 
 This exploit gains an ephemeral unrestricted root access on the device.
 For example, on `cedric` (some messages were removed for readability):
