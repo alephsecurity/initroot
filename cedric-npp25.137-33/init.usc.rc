@@ -1,4 +1,0 @@
-on early-init
-    setprop ro.com.google.clientidbase.ms android-uscellular-us
-    setprop ro.com.google.clientidbase.am android-uscellular-us
-    setprop ro.com.android.dataroaming true

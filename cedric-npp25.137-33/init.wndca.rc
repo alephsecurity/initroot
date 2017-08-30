@@ -1,2 +1,0 @@
-on early-init
-    setprop persist.radio.process_sups_ind 1

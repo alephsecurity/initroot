@@ -1,3 +1,0 @@
-on early-init
-     setprop ro.com.google.clientidbase.ms android-h3g-{country}
-     setprop ro.com.google.clientidbase.am android-h3g-{country}

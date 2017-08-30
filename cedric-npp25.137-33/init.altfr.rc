@@ -1,3 +1,0 @@
-on early-init
-     setprop ro.com.google.clientidbase.ms android-hms-vf-fr
-     setprop ro.com.google.clientidbase.am android-sfr-fr

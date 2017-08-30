@@ -1,5 +1,0 @@
-on early-init
-     setprop ro.com.android.dataroaming true
-     setprop ro.com.google.clientidbase.ms android-tmobile-{country}
-     setprop ro.com.google.clientidbase.am android-tmobile-{country}
-     setprop ro.com.google.clientidbase.gmm android-tmobile-{country}

@@ -1,5 +1,0 @@
-on init
-    mkdir /oem 0550 root root
-on fs
-    wait /dev/block/bootdevice/by-name/oem
-    mount ext4 /dev/block/bootdevice/by-name/oem /oem ro nosuid nodev context=u:object_r:oemfs:s0

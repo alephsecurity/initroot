@@ -1,3 +1,0 @@
-on early-init
-    setprop ro.com.google.clientidbase.ms android-att-us
-    setprop ro.com.google.clientidbase.am android-att-us

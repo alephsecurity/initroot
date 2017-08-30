@@ -1,0 +1,3 @@
+on early-init
+     setprop ro.com.google.clientidbase.ms android-orange-{country}
+     setprop ro.com.google.clientidbase.am android-orange-{country}

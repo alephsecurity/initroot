@@ -1,4 +1,0 @@
-on early-init
-    setprop ro.com.google.clientidbase.ms android-bell-ca
-    setprop ro.com.google.clientidbase.am android-bell-ca
-

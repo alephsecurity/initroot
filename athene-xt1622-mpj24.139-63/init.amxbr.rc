@@ -1,4 +1,0 @@
-on early-init
-    setprop ro.com.google.clientidbase.ms android-americamovil-{country}
-    setprop ro.com.google.clientidbase.am android-americamovil-{country}
-    setprop persist.radio.use_se_table_only 1

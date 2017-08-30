@@ -1,0 +1,57 @@
+import init.mmi.dtv.rc
+
+on post-fs-data
+    # AK09912 calibration file directory
+    mkdir /data/misc/akmd 0770 system compass
+
+# Start AKM executable
+service ecompassd /system/bin/akmd09912
+    class main
+    user compass
+    group compass misc input
+    disabled
+
+on property:ro.hw.ecompass=true
+    enable ecompassd
+
+# Huaqin factory diag service
+service yepdiag /system/bin/yepdiag
+	class core
+	user root
+	disabled
+
+service openfactory /system/bin/sh /system/etc/openfactory.sh
+	class main
+	user root
+	oneshot
+	disabled
+
+service capsense_reset /system/bin/capsense_reset
+	class core
+	user system
+	group system
+	disabled
+
+on property:sys.boot_completed=1
+  start capsense_reset
+
+on property:sys.config.factorystart=1
+	start openfactory
+
+on property:ro.bootmode=bp-tools
+	start yepdiag
+
+on boot
+	#change permission for capsensor
+	chmod 0660 /sys/class/capsense/enable
+	chown system system sys/class/capsense/enable
+	chmod 0660 /sys/class/capsense/reset
+	chown system system sys/class/capsense/reset
+
+	# Change permission for fingerprint sensor
+	chown system mot_tcmd /sys/bus/spi/devices/spi6.0/nav
+	chown system mot_tcmd /sys/bus/spi/devices/spi6.0/clk_enable
+	chown system mot_tcmd /sys/bus/spi/devices/spi6.0/dev_enable
+	chown system mot_tcmd /sys/bus/spi/devices/spi6.0/irq
+	chown system mot_tcmd /sys/bus/spi/devices/spi6.0/irq_cnt
+	chmod 0440 /sys/bus/spi/devices/spi6.0/irq_cnt

