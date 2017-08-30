@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # usage: initroot-untethered.sh <name> <local pad file> <target partition>
-# use the device specific initroot.sh which uses this file with the correct parameters
+# use the device specific initroot.sh which runs this file with the correct parameters
 
 echo Welcome to initroot-$1-untethered
 cd ../../tethered/$1
