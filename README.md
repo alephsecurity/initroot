@@ -148,6 +148,7 @@ Read our [blog post](https://alephsecurity.com/2017/08/30/untethered-initroot/#p
 | Moto G4 (XT1625) | `athene` | `0x90000000` | [@EWorcel](https://twitter.com/EWorcel) | Injected initrd that caused boot loops. [[proof](https://twitter.com/roeehay/status/868877672016957440)]  
 | Moto G3 | `osprey` | `0x90000000` | [@asiekierka](https://twitter.com/asiekierka) | Injected initrd that caused boot loops. [[proof](https://twitter.com/asiekierka/status/873467107090075648)]
 | Moto G2 (XT1072) | `thea` | `0x11000000`  | [@TheElix](https://disqus.com/by/TheElix/) | Injected initrd caused boot loops. [[proof](https://disqus.com/home/discussion/alephsecurity/initroot_hello_moto/#comment-3355705740)]
+| Moto G (XT1032) | `falcon_retfr` | `0x11000000`  | [Pierre Zurek](https://disqus.com/by/pierrezurek/) | Full Exploitation with 64MB padding [[proof](http://disq.us/p/1l1uqgb)]
 | Moto E (XT830C) | `condor_cdma` | `0x0E000000`  | [fetcher](https://disqus.com/by/disqus_U4zRE0u275/) | Full Exploitation of XT830C locked to Tracfone/Verizon with a 32MB padding [[proof](https://alephsecurity.com/2017/06/07/initroot-moto/#comment-3379229648)]
 | Other | - | - | [@jcase](https://twitter.com/jcase) | [[proof](https://twitter.com/jcase/status/868930263782313984)]
 
